@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SpawnEnemyWave();
+        SpawnEnemyWave(waveNumber);
         Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
     }
 
@@ -21,14 +21,14 @@ public class SpawnManager : MonoBehaviour
         if (enemyCount == 0)
         {
             waveNumber++; //Increases the amount of the integer varable waveNumber everytime enemyCount equals 0.
-            SpawnEnemyWave(); // if the enemy count equals 0 run the SpawnEnemyWave method to spawn the amount of enemies based on the integer variable waveNumber.
+            SpawnEnemyWave(waveNumber); // if the enemy count equals 0 run the SpawnEnemyWave method to spawn the amount of enemies based on the integer variable waveNumber.
             Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation); // when the enemyCount equals 0 spawn a powerup at coordinates reusing GenerateSpawnPosition method.
         }
     }
 
-    void SpawnEnemyWave()
+    void SpawnEnemyWave(int enemiesToSpawn)
     {
-        for (int i = 0; i < this.waveNumber; i++) // this for loops spawns a certain number of enemies based on the integer variable enemiesToSpawn, it starts at 0, every time an enemy is spawned i increases until i equals the integer variable enemiesToSpawn.
+        for (int i = 0; i < enemiesToSpawn; i++) // this for loops spawns a certain number of enemies based on the integer variable enemiesToSpawn, it starts at 0, every time an enemy is spawned i increases until i equals the integer variable enemiesToSpawn.
         {
             Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation); // Spawns an enemy based on the enemy in the prefab folder at random x and z coordinates generated in the GenerateSpawnPosition method below
         }
